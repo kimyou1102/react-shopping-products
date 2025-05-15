@@ -78,7 +78,7 @@ Error generating stack: `+o.message+`
   align-items: center;
 `,Pm=j.span`
   font-weight: 700;
-`;async function zm(e,t){if(!(await fetch("http://techcourse-lv2-alb-974870821.ap-northeast-2.elb.amazonaws.com/cart-items",{method:"POST",headers:{Authorization:"Basic a2lteW91MTEwMjpwYXNzd29yZA==","Content-Type":"application/json"},body:JSON.stringify({productId:e,quantity:t})})).ok)throw new Error("에러 발생")}async function Nm(e){if(!(await fetch(`http://techcourse-lv2-alb-974870821.ap-northeast-2.elb.amazonaws.com/cart-items/${e}`,{method:"DELETE",headers:{Authorization:"Basic a2lteW91MTEwMjpwYXNzd29yZA=="}})).ok)throw new Error("에러 발생")}function Tm({id:e,name:t,price:n,imageUrl:r,updateCartItems:l,getMatchCartItem:o}){var c;const i=!!o(e),u=(c=o(e))==null?void 0:c.id,s=async()=>{try{if(!i)await zm(e,1);else{if(!u)return;await Nm(u)}await l()}catch{}finally{}};return N.jsxs(Lm,{id:String(e),children:[N.jsx(Om,{imageUrl:r}),N.jsxs(Rm,{children:[N.jsxs(Fm,{children:[N.jsx($m,{children:t}),N.jsxs(Im,{children:[n.toLocaleString("ko"),"원"]})]}),N.jsx(Dm,{children:N.jsxs(Mm,{isItemInCart:!i,onClick:s,"data-testid":i?`remove-btn-${e}`:`add-btn-${e}`,children:[N.jsx(jm,{src:i?"/removeShoppingCartIcon.png":"/addShoppingCartIcon.png",alt:i?"removeShoppingCartIcon":"addShoppingCartIcon"}),N.jsx(Am,{children:i?"빼기":"담기"})]})})]})]})}const Lm=j.li`
+`;async function zm(e,t){if(!(await fetch("http://techcourse-lv2-alb-974870821.ap-northeast-2.elb.amazonaws.com/cart-items",{method:"POST",headers:{Authorization:"Basic a2lteW91MTEwMjpwYXNzd29yZA==","Content-Type":"application/json"},body:JSON.stringify({productId:e,quantity:t})})).ok)throw new Error("에러 발생")}async function Nm(e){if(!(await fetch(`http://techcourse-lv2-alb-974870821.ap-northeast-2.elb.amazonaws.com/cart-items/${e}`,{method:"DELETE",headers:{Authorization:"Basic a2lteW91MTEwMjpwYXNzd29yZA=="}})).ok)throw new Error("에러 발생")}function Tm({id:e,name:t,price:n,imageUrl:r,updateCartItems:l,getMatchCartItem:o,checkMax:i}){var p;const u=!!o(e),s=(p=o(e))==null?void 0:p.id,c=async()=>{try{if(i())throw new Error("50개 초과");if(!u)await zm(e,1);else{if(!s)return;await Nm(s)}await l()}catch{}finally{}};return N.jsxs(Lm,{id:String(e),children:[N.jsx(Om,{imageUrl:r}),N.jsxs(Rm,{children:[N.jsxs(Fm,{children:[N.jsx($m,{children:t}),N.jsxs(Im,{children:[n.toLocaleString("ko"),"원"]})]}),N.jsx(Dm,{children:N.jsxs(Mm,{isItemInCart:!u,onClick:c,"data-testid":u?`remove-btn-${e}`:`add-btn-${e}`,children:[N.jsx(jm,{src:u?"/removeShoppingCartIcon.png":"/addShoppingCartIcon.png",alt:u?"removeShoppingCartIcon":"addShoppingCartIcon"}),N.jsx(Am,{children:u?"빼기":"담기"})]})})]})]})}const Lm=j.li`
   height: 224px;
   border-radius: 8px;
 `,Om=j.div`
@@ -131,7 +131,7 @@ Error generating stack: `+o.message+`
 `,Am=j.span`
   font-size: 12px;
   font-weight: 600;
-`;function Um({productList:e,updateCartItems:t,getMatchCartItem:n}){return N.jsx(Bm,{children:e.map(r=>N.jsx(Tm,{...r,id:r.id,updateCartItems:t,getMatchCartItem:n}))})}const Bm=j.ul`
+`;function Um({productList:e,updateCartItems:t,getMatchCartItem:n,checkMax:r}){return N.jsx(Bm,{children:e.map(l=>N.jsx(Tm,{...l,id:l.id,updateCartItems:t,getMatchCartItem:n,checkMax:r}))})}const Bm=j.ul`
   display: grid;
   list-style-type: none;
   padding: 0;
@@ -177,7 +177,7 @@ Error generating stack: `+o.message+`
   border-top: ${e=>e.size?`${Math.round(e.size/10)}px solid ${e.color}`:"1px solid black"};
   border-radius: 50%;
   animation: ${Gm} 1s linear infinite;
-`;function qm({updateCartItems:e,getMatchCartItem:t,updateErrorMessage:n}){const[r,l]=F.useState([]),[o,i]=F.useState("idle");return F.useEffect(()=>{async function u(){try{i("loading");const c=(await Li()).content;l(c),i("success")}catch{i("error"),n(" 상품 목록 조회 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.")}}u()},[n]),N.jsxs(N.Fragment,{children:[N.jsx(Hm,{setProducts:l}),o==="success"?N.jsx(Um,{productList:r,updateCartItems:e,getMatchCartItem:t}):null,o==="loading"?N.jsx(bm,{children:N.jsx(Zm,{size:100,color:"red"})}):null]})}const bm=j.div`
+`;function qm({updateCartItems:e,getMatchCartItem:t,updateErrorMessage:n,checkMax:r}){const[l,o]=F.useState([]),[i,u]=F.useState("idle");return F.useEffect(()=>{async function s(){try{u("loading");const p=(await Li()).content;o(p),u("success")}catch{u("error"),n(" 상품 목록 조회 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.")}}s()},[n]),N.jsxs(N.Fragment,{children:[N.jsx(Hm,{setProducts:o}),i==="success"?N.jsx(Um,{productList:l,updateCartItems:e,getMatchCartItem:t,checkMax:r}):null,i==="loading"?N.jsx(bm,{children:N.jsx(Zm,{size:100,color:"red"})}):null]})}const bm=j.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -203,7 +203,7 @@ Error generating stack: `+o.message+`
   font-weight: 500;
   font-size: 12px;
   color: #0a0d13;
-`;function i0(){const[e,t]=F.useState([]),[n,r]=F.useState("idle"),[l,o]=F.useState([]),i=F.useCallback(c=>{o(p=>[...p,c])},[]);F.useEffect(()=>{async function c(){try{r("loading");const p=await na();t(p.content),r("success")}catch{r("error"),i("장바구니 조회 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.")}}c()},[i]);const u=async()=>{try{const c=await na();t(c.content)}catch{}finally{}},s=c=>e.find(h=>h.product.id===c);return N.jsxs(N.Fragment,{children:[N.jsx(Sm,{status:n,cartItemCount:e.length}),N.jsx(e0,{children:N.jsx(qm,{cartItems:e,updateCartItems:u,getMatchCartItem:s,updateErrorMessage:i})}),N.jsx(u0,{children:l?l.map(c=>N.jsx(r0,{children:c})):null})]})}const u0=j.div`
+`;function i0(){const[e,t]=F.useState([]),[n,r]=F.useState("idle"),[l,o]=F.useState([]),i=F.useCallback(p=>{o(h=>[...h,p])},[]);F.useEffect(()=>{async function p(){try{r("loading");const h=await na();t(h.content),r("success")}catch{r("error"),i("장바구니 조회 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.")}}p()},[i]);const u=async()=>{try{const p=await na();t(p.content)}catch{}finally{}},s=p=>e.find(m=>m.product.id===p),c=()=>e.length===50;return N.jsxs(N.Fragment,{children:[N.jsx(Sm,{status:n,cartItemCount:e.length}),N.jsx(e0,{children:N.jsx(qm,{cartItems:e,updateCartItems:u,getMatchCartItem:s,updateErrorMessage:i,checkMax:c})}),N.jsx(u0,{children:l?l.map(p=>N.jsx(r0,{children:p})):null})]})}const u0=j.div`
   position: absolute;
   width: 100%;
   top: 64px;
