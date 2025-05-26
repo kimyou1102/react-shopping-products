@@ -370,4 +370,4 @@ Error generating stack: `+o.message+`
   display: flex;
   flex-direction: column;
   gap: 10px;
-`;async function b0(){const{worker:e}=await qf(()=>import("./browser-CQr_adT2.js"),[]);await e.start({serviceWorker:{url:"/react-shopping-products/mockServiceWorker.js"},findWorker(t){return t.endsWith("mockServiceWorker.js")},onUnhandledRequest:"bypass"})}b0().then(()=>{Do.createRoot(document.getElementById("root")).render(k.jsx(xa.StrictMode,{children:k.jsx(t0,{children:k.jsx(J0,{})})}))});
+`;async function b0(){const{worker:e}=await qf(()=>import("./browser-Bhn2K4jO.js"),[]);await e.start({serviceWorker:{url:"/react-shopping-products/mockServiceWorker.js"},findWorker(t){return t.endsWith("mockServiceWorker.js")},onUnhandledRequest:"bypass"})}b0().then(()=>{Do.createRoot(document.getElementById("root")).render(k.jsx(xa.StrictMode,{children:k.jsx(t0,{children:k.jsx(J0,{})})}))});
